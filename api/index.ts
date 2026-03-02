@@ -25,7 +25,12 @@ app.use((req: Request, res: Response, next: NextFunction) => {
         next();
     });
 });
-
+enum Position {
+    SeniorFrontendDeveloper = "Senior Frontend Developer",
+    SeniorBackendDeveloper = "Senior Backend Developer",
+    DevOpsEngineer = "DevOps Engineer",
+    UXUIDesigner = "UX/UI Designer"
+}
 // Zod Schema สำหรับข้อมูลส่วนตัวผู้สมัคร
 const personalInfoSchema = z.object({
     firstName: z.string().min(1, 'First name is required'),
@@ -34,7 +39,7 @@ const personalInfoSchema = z.object({
     dateOfBirth: z.string().regex(/^\d{2}-\d{2}-\d{4}$/, 'Invalid date format (e.g., 02-03-2026)'),
     age: z.number().int('Age must be an integer').min(0, 'Age must be a positive number'),
     email: z.string().email('Invalid email format'),
-    position: z.string().min(1, 'Position is required'),
+    position: z.nativeEnum(Position),
     expectedSalary: z.number().min(0, 'Expected salary must be a positive number')
 });
 
