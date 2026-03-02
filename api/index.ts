@@ -53,11 +53,10 @@ app.post('/api/submit', (req: Request, res: Response) => {
         });
     } catch (error) {
         if (error instanceof z.ZodError) {
-            const zodError = error as any;
             return res.status(400).json({
                 success: false,
                 message: "Invalid data (Validation Failed)",
-                errors: zodError.errors.map((err: any) => ({
+                errors: error.issues.map((err) => ({
                     field: err.path.join('.'),
                     message: err.message
                 }))
