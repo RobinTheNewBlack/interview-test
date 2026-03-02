@@ -69,7 +69,7 @@ app.post('/api/submit', (req: Request, res: Response) => {
 });
 
 app.get('/api/health', (req: Request, res: Response) => {
-    res.status(200).json({ status: "OK", message: "Mock API is up and running!" });
+    res.status(200).json({ status: "OK", message: "API is up and running!" });
 });
 
 export default app;
