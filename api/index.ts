@@ -48,7 +48,7 @@ app.post('/api/submit', (req: Request, res: Response) => {
         // จำลองการ Response ว่าข้อมูลบันทึกสำเร็จ
         return res.status(200).json({
             success: true,
-            message: "Data saved successfully (Mock Created)",
+            message: "User created successfully",
             data: validatedData,
         });
     } catch (error) {
@@ -57,10 +57,10 @@ app.post('/api/submit', (req: Request, res: Response) => {
             return res.status(400).json({
                 success: false,
                 message: "Invalid data (Validation Failed)",
-                errors: zodError.errors.map((err: any) => ({
-                    field: err.path.join('.'),
-                    message: err.message
-                }))
+                // errors: zodError.errors.map((err: any) => ({
+                //     field: err.path.join('.'),
+                //     message: err.message
+                // }))
             });
         }
 
