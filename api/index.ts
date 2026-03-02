@@ -39,7 +39,10 @@ const personalInfoSchema = z.object({
     dateOfBirth: z.string().regex(/^\d{2}-\d{2}-\d{4}$/, 'Invalid date format (e.g., 02-03-2026)'),
     age: z.number().int('Age must be an integer').min(0, 'Age must be a positive number'),
     email: z.string().email('Invalid email format'),
-    position: z.nativeEnum(Position),
+    position: z.enum(
+        Object.values(Position) as [string, ...string[]],
+        { error: 'Invalid position expected one of "Senior Frontend Developer"|"Senior Backend Developer"|"DevOps Engineer"|"UX/UI Designer"' }
+    ),
     expectedSalary: z.number().min(0, 'Expected salary must be a positive number')
 });
 
