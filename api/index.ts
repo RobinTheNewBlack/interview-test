@@ -41,7 +41,7 @@ const personalInfoSchema = z.object({
     email: z.string().email('Invalid email format'),
     position: z.enum(
         Object.values(Position) as [string, ...string[]],
-        { error: 'Invalid position expected one of "Senior Frontend Developer"|"Senior Backend Developer"|"DevOps Engineer"|"UX/UI Designer"' }
+        { error: 'Invalid position expected one of Senior Frontend Developer | Senior Backend Developer | DevOps Engineer | UX/UI Designer' }
     ),
     expectedSalary: z.number().min(0, 'Expected salary must be a positive number')
 });
