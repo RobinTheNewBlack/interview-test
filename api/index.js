@@ -39,10 +39,10 @@ app.post('/api/submit', (req, res) => {
             return res.status(400).json({
                 success: false,
                 message: "Invalid data (Validation Failed)",
-                errors: zodError.errors.map((err) => ({
-                    field: err.path.join('.'),
-                    message: err.message
-                }))
+                // errors: zodError.errors.map((err) => ({
+                //     field: err.path.join('.'),
+                //     message: err.message
+                // }))
             });
         }
         return res.status(500).json({
